@@ -1,7 +1,7 @@
-import { Job } from 'bullmq';
+import { InMemoryJob } from './queue';
 import { generateDataBatch } from '../generation/generation.service';
 
-export const processGenerationJob = async (job: Job) => {
+export const processGenerationJob = async (job: InMemoryJob) => {
     try {
         const { schemaId, config } = job.data;
 

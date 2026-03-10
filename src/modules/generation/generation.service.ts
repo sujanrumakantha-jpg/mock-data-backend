@@ -1,4 +1,4 @@
-import { Job } from 'bullmq';
+import { InMemoryJob } from '../jobs/queue';
 import { SchemaModel } from '../../models/Schema.model';
 import { ReferentialEngine } from './referential.engine';
 import { BlueprintGenerator } from './blueprint.generator';
@@ -45,7 +45,7 @@ async function parallelWithLimit<T, R>(
     return { results, errors };
 }
 
-export const generateDataBatch = async (schemaId: string, config: any, job: Job) => {
+export const generateDataBatch = async (schemaId: string, config: any, job: InMemoryJob) => {
     const schemaDoc = await SchemaModel.findById(schemaId);
     if (!schemaDoc) throw new Error('Schema not found');
 
