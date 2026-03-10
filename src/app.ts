@@ -12,8 +12,7 @@ app.use(helmet({
     contentSecurityPolicy: false, // Disable CSP in dev to avoid 403/blocking
 }));
 app.use(cors({
-    origin: true, // Reflects the request origin, allowing all while supporting credentials
-    credentials: true,
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept']
 }));
