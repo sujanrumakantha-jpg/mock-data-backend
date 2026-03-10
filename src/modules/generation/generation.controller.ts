@@ -43,7 +43,7 @@ export const GenerationController = {
         try {
             const { jobId } = req.params;
 
-            const job = await generationQueue.getJob(jobId);
+            const job = await generationQueue.getJob(jobId as string);
 
             if (!job) {
                 // If not in queue, it might be completed and removed, or never existed
@@ -80,7 +80,7 @@ export const GenerationController = {
     async getJobResult(req: Request, res: Response, next: NextFunction) {
         try {
             const { jobId } = req.params;
-            const job = await generationQueue.getJob(jobId);
+            const job = await generationQueue.getJob(jobId as string);
 
             if (!job) {
                 return res.status(404).json({ error: 'Job not found' });
